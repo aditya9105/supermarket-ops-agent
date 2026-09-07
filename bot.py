@@ -184,6 +184,13 @@ async def cmd_reset(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("🔄 Conversation reset. DB data is intact.")
 
 
+async def cmd_new(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Clear conversation history for this chat. Required by cross-session memory brief."""
+    chat_id = update.effective_chat.id
+    conversation_histories[chat_id] = []
+    await update.message.reply_text("Starting fresh — your store data and saved preferences are unchanged.")
+
+
 def main():
     # Run DB migrations + seed on startup
     run_migrations()
@@ -197,6 +204,7 @@ def main():
 
     app.add_handler(CommandHandler("start",  cmd_start))
     app.add_handler(CommandHandler("reset",  cmd_reset))
+    app.add_handler(CommandHandler("new",    cmd_new))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     logger.info("Bot started — polling for updates.")
