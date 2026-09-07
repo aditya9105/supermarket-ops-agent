@@ -1,0 +1,17 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+data/
+*.db
+*.db-wal
+*.db-shm
+*.pdf
+*.pptx
+*.log
+.DS_Store
+dist/
+build/
+*.egg-info/
