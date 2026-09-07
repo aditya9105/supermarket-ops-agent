@@ -36,7 +36,7 @@ from agent.tools.preferences import load_preferences_for_prompt
 
 logger = logging.getLogger(__name__)
 
-MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 MAX_TOOL_ROUNDS = 12   # safety cap to prevent runaway loops
 
 # Retry config for rate-limit errors (Gemini free tier: ~15 RPM)

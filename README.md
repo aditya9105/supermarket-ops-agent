@@ -1,14 +1,16 @@
 # Supermarket Ops Agent
 
+**Live Bot:** [@adityas_supermarket_bot](https://t.me/adityas_supermarket_bot)
+
 A conversational Telegram bot that lets an Indian kirana (grocery) store owner manage their entire shop through natural-language chat — billing, inventory, credit (khata), daily close, GST-correct PDF invoices, and PPTX analysis decks. No web dashboard, no forms. The chat is the product.
 
 ---
 
 ## Harness Choice: Google Gemini (google-genai SDK)
 
-This project uses the **Google `google-genai` Python SDK** (Gemini 2.5 Flash) as the agent runtime.
+This project uses the **Google `google-genai` Python SDK** (Gemini 3.5 Flash Lite) as the agent runtime.
 
-**Why Gemini instead of Claude?** Budget. Gemini Flash-tier models are available on Google AI Studio's free tier with no billing account required — making this viable for a small kirana operator who shouldn't need to spend on AI infrastructure. This satisfies the brief's "or equivalent" clause: the system uses genuine LLM-driven tool orchestration (observe → reason → act), not a hardcoded router.
+**Why Gemini instead of Claude?** Budget and capability. Gemini Flash Lite models are available on Google AI Studio's free tier with no billing account required — making this viable for a small kirana operator who shouldn't need to spend on AI infrastructure. This satisfies the brief's "or equivalent" clause: the system uses genuine LLM-driven tool orchestration (observe → reason → act), not a hardcoded router.
 
 | Requirement | Why Gemini SDK satisfies it |
 |---|---|
@@ -231,7 +233,7 @@ pytest tests/ -v
 | `SHOP_ADDRESS` | optional | Shop address for invoices |
 | `SHOP_PHONE` | optional | Shop phone for invoices |
 | `DB_PATH` | optional | SQLite file path (default: `data/supermarket.db`) |
-| `GEMINI_MODEL` | optional | Model to use (default: `gemini-2.5-flash`) |
+| `GEMINI_MODEL` | optional | Model to use (default: `gemini-3.5-flash-lite`) |
 | `ALLOWED_USER_IDS` | optional | Comma-separated Telegram user IDs for access control |
 | `LOG_LEVEL` | optional | `INFO` (default), `DEBUG`, `WARNING` |
 
